@@ -6,11 +6,11 @@ sfp int2sfp(int input){
 	sfp x;
 	if(input>sfpmax)
 	{
-		x = sfpmax;
+		x = 0111110000000000;
 	}
 	else if(x<sfpmin)
 	{
-		x = sfpmin;
+		x = 1111110000000000;
 	}
 	else
 	{
