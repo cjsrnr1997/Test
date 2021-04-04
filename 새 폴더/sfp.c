@@ -19,7 +19,7 @@ sfp int2sfp(int input){
 return x;
 }
 
-/*int sfp2int(sfp input){
+int sfp2int(sfp input){
 }
 
 sfp float2sfp(float input){
@@ -35,7 +35,7 @@ sfp sfp_add(sfp a, sfp b){
 sfp sfp_mul(sfp a, sfp b){
 	
 }
-*/
+
 char* sfp2bits(sfp result){
   int c, k, k2;
   int m=0;

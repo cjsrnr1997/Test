@@ -41,7 +41,7 @@ int main(int argc, char *argv[])
 	fprintf(fp_output, "\n");
 	printf("\n");
 
-/*	printf("Test 2: casting from sfp to int\n");
+	printf("Test 2: casting from sfp to int\n");
 	for(idx = 0; idx < case_num1; idx++) {
 		fscanf(fp_answer, "%d", &i_ans);
 		i = sfp2int(sf1[idx]);
@@ -192,7 +192,7 @@ int main(int argc, char *argv[])
 	free(sfpbits2);
 	free(sf1);
 	free(sf2);
-*/
+
 	fclose(fp_input);
 	fclose(fp_output);
 	fclose(fp_answer);
