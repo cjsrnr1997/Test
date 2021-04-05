@@ -2,7 +2,6 @@
 #include <string.h>
 #include <stdlib.h>
 #include "sfp.h"
-
 int main(int argc, char *argv[])
 {
 	FILE *fp_input;
