@@ -1,16 +1,16 @@
 #include "sfp.h"
 #include <stdlib.h>
 sfp int2sfp(int input){
-	int sfpmax=(2<<16)-32;
-    int sfpmin=-((2<<16)-32);
+	int sfpmax=(2<<15)-32;
+    int sfpmin=-((2<<15)-32);
 	sfp x;
 	if(input>sfpmax)
 	{
-		x = 0111110000000000;
+		x = (sfp) sfpmax + 1;
 	}
-	else if(x<sfpmin)
+	else if(input < sfpmin)
 	{
-		x = 1111110000000000;
+		x = (sfp) sfpmin -1;
 	}
 	else
 	{
@@ -20,6 +20,22 @@ return x;
 }
 
 int sfp2int(sfp input){
+	int sfpmax=(2<<16)-32;
+    int sfpmin=-((2<<16)-32);
+    int x;
+	if(input>sfpmax)
+	{
+		x = sfpmax + 1;
+	}
+	else if(x<sfpmin)
+	{
+		x = sfpmin - 1;
+	}
+	else
+	{
+		x = (sfp) input;
+	}
+return x;
 }
 
 sfp float2sfp(float input){
@@ -47,13 +63,30 @@ char* sfp2bits(sfp result){
   int array1[16];
   int array2[5];
   int array3[10];
-  if(result == 0000000000000000)
+  int sfpmax=(2<<15)-31;
+  int sfpmin=-((2<<15)-32);
+  if(result == 0)
   {
   	for(m;m<15;m++)
   	{
   		array1[m]=0;
 	  }
   }
+  else if(result == sfpmax)
+  {
+  	array1[0]=0;
+  	for(c = 1; c <= 5; c++)
+  	{
+  		array1[c]=1;
+	  }
+	  for(c = 6; c <= 15; c++)
+  	{
+  		array1[c]=1;
+	  }
+	  
+  }
+  
+  
   else{ 
   	if(result > 0)
 	  {
@@ -125,9 +158,10 @@ char* sfp2bits(sfp result){
   {
   	array1[c]=array3[c-6];
   }
-
+   
   
 }
+
 char* arraysfp = (char*)malloc(sizeof(char)*17);
 for(c=0;c<=15;c++)
 {
